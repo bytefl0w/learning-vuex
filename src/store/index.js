@@ -3,11 +3,7 @@ import { createStore } from 'vuex';
 const store = createStore({
   state() {
     return {
-      user: {
-        firstName: 'Erik',
-        lastName: 'Mortimer',
-        email: 'hello@erikmortimer.dev',
-      },
+      user: null,
       products: [{
         id: '24ab7b14-f935-44c1-b91b-8598123ea54a',
         title: 'Headlight Helmet',
@@ -45,6 +41,11 @@ const store = createStore({
         image: 'mega-pokey-kit.jpg',
       }],
     };
+  },
+  mutations: {
+    setUser(state, user) {
+      state.user = user;
+    },
   },
 });
 

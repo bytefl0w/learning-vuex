@@ -52,6 +52,15 @@ export default {
   methods: {
     registerUser() {
       this.saving = true;
+      const user = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+      };
+      // this.$store.state.user = user; DON'T DO THIS! USE MUTATION!!
+      this.$store.commit('setUser', user); // NOTE: we are passing in a string since it allows for multiple models to respond to the mutation
+      // Above passed in string is called the "mutation type"
+      this.$router.push('/products');
     },
     cancel() {
       this.router.navigate(['/']);
