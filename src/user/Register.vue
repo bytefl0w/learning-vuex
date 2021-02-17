@@ -56,9 +56,14 @@ export default {
         firstName: this.firstName,
         lastName: this.lastName,
         email: this.email,
+        password: this.password,
       };
       // this.$store.state.user = user; DON'T DO THIS! USE MUTATION!!
-      this.$store.commit('setUser', user); // NOTE: we are passing in a string since it allows for multiple models to respond to the mutation
+      // NOTE: we are passing in a string since it allows for multiple models
+      // to respond to the mutation
+      // this.$store.commit('setUser', user);
+      this.$store.dispatch('registerUser', user);
+
       // Above passed in string is called the "mutation type"
       this.$router.push('/products');
     },
