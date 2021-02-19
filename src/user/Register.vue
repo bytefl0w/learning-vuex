@@ -67,7 +67,7 @@ export default {
       // NOTE: we are passing in a string since it allows for multiple models
       // to respond to the mutation
       // this.$store.commit('setUser', user);
-      this.$store.dispatch('registerUser', user)
+      this.$store.dispatch('users/registerUser', user)
         .then(() => this.$router.push('/products'))
         .catch(() => { this.registerError = true; });
       // Above passed in string is called the "mutation type"

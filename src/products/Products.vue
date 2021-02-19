@@ -30,7 +30,7 @@
 export default {
   name: 'Products',
   created() {
-    this.$store.dispatch('fetchProducts');
+    this.$store.dispatch('products/fetchProducts');
   },
   data() {
     return {
@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     visibleProducts() {
-      return this.$store.getters.getFilteredProducts(this.filter);
+      return this.$store.getters['products/getFilteredProducts'](this.filter);
     },
   },
 };
