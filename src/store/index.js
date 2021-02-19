@@ -57,11 +57,11 @@ const store = createStore({
     // You can specify the data you want to send with a parameter for the action
     // Axios will take this in as a second param
     registerUser({ commit }, user) {
-      axios.post('/api/register', user)
+      return axios.post('/api/register', user)
         .then((result) => commit('setUser', result.data));
     },
     signIn({ commit }, userLogin) {
-      axios.post('/api/sign-in', userLogin)
+      return axios.post('/api/sign-in', userLogin)
         .then((result) => commit('setUser', result.data));
     },
   },

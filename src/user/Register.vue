@@ -51,6 +51,11 @@ export default {
   },
   methods: {
     registerUser() {
+      // Implementation is a perfectly valid use case for responding to promises
+      // from an action. Don't use this as a primary way to get data from actions.
+      // For the actual flow of data, your actions should commit mutations
+      // and store the data inside the store state.
+      this.registerError = false;
       this.saving = true;
       const user = {
         firstName: this.firstName,
@@ -62,10 +67,10 @@ export default {
       // NOTE: we are passing in a string since it allows for multiple models
       // to respond to the mutation
       // this.$store.commit('setUser', user);
-      this.$store.dispatch('registerUser', user);
-
+      this.$store.dispatch('registerUser', user)
+        .then(() => this.$router.push('/products'))
+        .catch(() => { this.registerError = true; });
       // Above passed in string is called the "mutation type"
-      this.$router.push('/products');
     },
     cancel() {
       this.router.navigate(['/']);
